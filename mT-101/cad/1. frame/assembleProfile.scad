@@ -121,8 +121,6 @@ module connect_profiles(distance,count,isFemale,rotatex=0,rotatey=0)
 {
 	rotatez=0;
 
-	echo( "count : ", count );
-
 	for( i = [0:count-1] )
 	{
 		if( i==count-1 )
