@@ -17,9 +17,9 @@ include <../library/Profile30.scad>
 profile_length=100;
 apart_factor = 0.01;
 
-bottom_length_x = 1000;
+bottom_length_x = 600;
 bottom_length_y = 600;
-bottom_length_z = 800;
+bottom_length_z = 600;
 
 module zaxes(apart=false)
 {
@@ -187,4 +187,4 @@ module assembleProfile(isPrintable=false,apart=false)
 }
 
 //simple usage
-assembleProfile(apart=true);
+//assembleProfile(apart=true);
