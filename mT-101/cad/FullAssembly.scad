@@ -1,5 +1,7 @@
 include <frame/assembleProfile.scad>
 include <library/linearShaft.scad>
+include <library/LM10UU.scad>
+include <library/ShaftSupport.scad>
 
 width = 600;
 y_axis_rail_offset_z = 20;
@@ -199,60 +201,4 @@ module shaftsupportmodule()
 
 	translate([-15,shaft_support_depth,thickness])
 	shaftsupport();
-}
-
-
-//non-printable
-//parts::Linear shaft support
-//http://www.ebay.com/itm/4pcs-SK10-SH10A-Linear-Rail-Shaft-Support-XYZ-Table-CNC-/290562135602?pt=LH_DefaultDomain_15&hash=item43a6da5632
-shaft_support_width=42;
-shaft_support_height=32.8;
-shaft_support_depth=14;
-shaft_support_base_height=6;
-shaft_support_center_width=18;
-shaft_support_hole_width=5;
-shaft_support_hole_height=20;
-
-module shaftsupport()
-{
-	pos_x = (shaft_support_width-shaft_support_center_width)/2;
-
-	translate([-shaft_support_width/2,0,0])
-	{
-		color("DarkRed")
-		rotate([90,0,0])
-		linear_extrude(height=shaft_support_depth)
-		difference()
-		{
-			union()
-			{
-				square([shaft_support_width,shaft_support_base_height]);
-
-				translate([pos_x,0,0])
-				square([shaft_support_center_width,shaft_support_height]);
-			}
-
-			translate([shaft_support_width/2,shaft_support_hole_height,0])
-			circle(shaft_support_hole_width);
-		}
-	}
-}
-
-//linear ball bearing
-//LM10UU
-//http://www.ebay.com/itm/10pcs-LM10UU-10mm-Linear-Ball-Bearing-Bush-Bushing-/300629832385?pt=BI_Heavy_Equipment_Parts&hash=item45feef32c1
-module LM10UU()
-{
-	outer_diameter=9.5;
-	inscribed_circle=5;
-	length=29;
-
-	translate([0,0,outer_diameter/2])
-	rotate([90,0,0])
-	linear_extrude(height=length)
-	difference()
-	{
-		circle(outer_diameter,center=true);
-		circle(inscribed_circle,center=true);
-	}
 }
